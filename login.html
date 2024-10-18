@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form validation</title>
+
+    <link rel="stylesheet" href="form.css">
+
+</head>
+
+<body>
+    <form name="application_form"  onsubmit="return validate_form();">
+        <fieldset>
+            <h1>Please enter your name</h1>
+            <p>Your Name: <input type="text" name="contact_name"></p>
+
+
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email">
+
+
+            <p style="color: rgb(167, 104, 9);"><b>GENDER</b></p>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label><br>
+
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label><br>
+            <br>
+
+            <label for="age">Select your Age:</label>
+            <select id="age" name="age">
+                <option value="18">20</option>
+                <option value="19">21</option>
+                <option value="20">22</option>
+                <option value="21">23</option>
+                <option value="22">24</option>
+            </select><br><br>
+
+
+            <p style="color: brown;"><b>SKILLS</b></p>
+            <input type="checkbox" id="Dancing" name="Hobbies" value="Dancing">
+            <label for="html">HTML</label><br>
+
+            <input type="checkbox" id="singing" name="Hobbies" value="css">
+            <label for="css">CSS</label><br>
+
+            <input type="checkbox" id="playing" name="Hobbies" value="playing">
+            <label for="javascript">Javascript</label><br>
+
+            <input type="checkbox" id="arts" name="Hobbies" value="arts">
+            <label for="react">React</label><br>
+
+            <input type="checkbox" id="swimming" name="Hobbies" value="swimming">
+            <label for="angular">Angular</label><br>
+
+            <input type="checkbox" id="vuejs" name="Hobbies" value="vuejs">
+            <label for="vuejs">VueJS</label><br>
+
+
+            <p><input type="submit" name="send" value="Send details"></p>
+        </fieldset> 
+    </form>
+
+
+    <script type="text/javascript">
+        function validate_form() 
+        {
+            if (document.application_form.contact_name.value == "") {
+                alert("please fill in the 'Your Name' box.");
+                return false;
+            }
+            
+            const email = document.application_form.email.value ;
+            if (email.length > 15 ) {
+                alert("Please select email valid.");
+                return false;
+            }
+            return true;  
+
+            if (!(document.application_form.gender[0].checked ||
+                document.application_form.gender[1].checked)) {
+                alert("Please choose your gender: male or female");
+                return false;
+            }
+
+            if (document.application_form.age.selectedIndex == 0) {
+                alert("Please select your Age.");
+                return false;
+            }
+
+            const skills = document.application_form.querySelectorAll('input[name="skills"]:checked');
+            if (skills.length !== 0) {
+                alert("Please select Skills.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+
+</html>
